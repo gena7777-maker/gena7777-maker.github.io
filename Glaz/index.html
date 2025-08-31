@@ -3,180 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ГЛАЗ БОГА</title>
+    <title>Ссылки на ботов</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --accent: #fd79a8;
+            --dark: #2d3436;
+            --light: #dfe6e9;
+            --text: #2d3436;
+            --card: rgba(255, 255, 255, 0.9);
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000000;
-            color: #ffffff;
-            min-height: 100vh;
+            font-family: 'Rubik', sans-serif;
+            max-width: 650px;
+            margin: 0 auto;
             padding: 20px;
-            line-height: 1.4;
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* GIF фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://watch.wave.video/H8FnhwIWTl7yYonT') center/cover no-repeat;
+            z-index: -2;
+            opacity: 0.9;
+        }
+        
+        /* Затемнение фона */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
         }
         
         .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #111111;
-            border-radius: 0;
+            background: var(--card);
+            border-radius: 15px;
             padding: 30px;
-            border: 1px solid #333333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .header {
+        /* Аватарка */
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.5);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
             text-align: center;
+            color: var(--primary);
             margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #333333;
-        }
-        
-        .main-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            color: #00ff00;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
         
-        .subtitle {
-            font-size: 1rem;
-            color: #cccccc;
-            font-weight: 300;
-        }
-        
-        .section {
+        .channel-block {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
             margin-bottom: 20px;
-            padding: 15px;
-            background: #1a1a1a;
-            border-radius: 5px;
-            border-left: 3px solid #00ff00;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
         }
         
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #00ff00;
-            margin-bottom: 8px;
-            text-transform: uppercase;
+        .channel-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
         }
         
-        .section-text {
-            color: #cccccc;
-            font-size: 0.95rem;
+        .channel-line:last-child {
+            border-bottom: none;
         }
         
-        .divider {
-            height: 1px;
-            background: #333333;
-            margin: 20px 0;
+        .link-item {
+            background: white;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
         }
         
-        .highlight {
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border-left: 3px solid #00ff00;
+        .link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         
-        .highlight-title {
-            font-weight: 600;
-            color: #00ff00;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-            text-transform: uppercase;
+        .link-text {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
         }
         
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #333333;
-            color: #666666;
-            font-size: 0.9rem;
-        }
-        
-        /* Стили как на фото */
-        .compact {
-            margin-bottom: 10px;
-        }
-        
-        .compact .section-text {
-            margin-bottom: 0;
-        }
-        
-        .no-border {
-            border-left: 3px solid transparent;
-        }
-        
-        .center {
+        .link-emoji {
+            font-size: 1.4em;
+            margin-right: 12px;
+            width: 30px;
             text-align: center;
         }
 
-        @media (max-width: 768px) {
+        .link-text .link-emoji:last-child {
+            margin-left: 5px;
+            margin-right: 0;
+        }
+
+        .notification .link-emoji {
+            margin-right: 5px;
+            margin-left: 0;
+        }
+        
+        .link-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.95em;
+            box-shadow: 0 3px 10px rgba(108, 92, 231, 0.3);
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.4);
+        }
+        
+        .link-btn.disabled {
+            background: #b2bec3;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .notification {
+            background: #fff9e6;
+            border-left: 4px solid #fdcb6e;
+            padding: 18px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.95em;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
             .container {
                 padding: 20px;
-                margin: 10px;
             }
             
-            .main-title {
-                font-size: 2rem;
+            h1 {
+                font-size: 1.8rem;
             }
             
-            .section {
-                padding: 12px;
+            .avatar {
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1 class="main-title">ГЛАЗ БОГА</h1>
-            <p class="subtitle">Все актуальный боты сохраните ссылку что бы иметь постоянный доступ</p>
+        <!-- Аватарка -->
+        <div class="avatar">
+            <img src="https://i.postimg.cc/DJkL8FYF/image.jpg" alt="Аватарка">
         </div>
         
-        <div class="section">
-            <h2 class="section-title">ГЛАЗ БОГА / ПРОБИВ</h2>
-            <p class="section-text">Большой поиск по разным данным</p>
+        <h1>🔗 Ссылки на ботов</h1>
+        
+        <div class="channel-block">
+            <div class="channel-line">
+                <span class="link-text"><span class="link-emoji">📢</span> НАШ КАНАЛ</span>
+                <a href="https://t.me/+lGnQt4AN-cgzNDJl" class="link-btn">ЖМИ</a>
+            </div>
+            <div class="channel-line">
+                <span class="link-text"><span class="link-emoji">🔁</span> Резервный канал</span>
+                <span class="link-btn disabled">Отсутствует</span>
+            </div>
         </div>
         
-        <div class="section compact">
-            <h3 class="section-title">СМС БОМБЕР</h3>
-            <p class="section-text">Бесплатный пробный смс спам</p>
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">💬</span> НАШ ЧАТ</span>
+            <a href="https://t.me/+SpkFdndx7qkwYWFl" class="link-btn">ЖМИ</a>
         </div>
         
-        <div class="divider"></div>
-        
-        <div class="highlight no-border">
-            <div class="highlight-title">ДЕШЕВЫЕ ЗВЕЗДЫ STARS</div>
-            <p class="section-text">Экономия до 35% при покупке Телеграм звезд</p>
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">💎</span> SUNWAY</span>
+            <a href="https://t.me/vedeto_bot" class="link-btn">ЖМИ</a>
         </div>
         
-        <div class="divider"></div>
-        
-        <div class="highlight no-border center">
-            <div class="highlight-title">САМЫЙ БЫСТРЫЙ ВПН</div>
-            <p class="section-text">VPN пробник за 1P !!!</p>
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">🦠</span> VirUs</span>
+            <a href="https://t.me/decoret_bot" class="link-btn">ЖМИ</a>
         </div>
         
-        <div class="divider"></div>
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji" style="margin-right: 3px;">♦</span>ANUKRA<span class="link-emoji" style="margin-left: 3px;">♣</span></span>
+            <a href="https://t.me/bemalo_bot" class="link-btn">ЖМИ</a>
+        </div>
+
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">🧸</span> TEDDY</span>
+            <a href="https://t.me/selamo_bot" class="link-btn">ЖМИ</a>
+        </div>
+
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">👤</span> Менеджер</span>
+            <a href="https://t.me/goctac9" class="link-btn">ЖМИ</a>
+        </div>
         
-        <div class="highlight no-border">
-            <div class="highlight-title">РАЗДЕВАТОР ИИ</div>
-            <p class="section-text">Сделай ввод из любого фото</p>
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">💎</span> Актуальные задания</span>
+            <a href="https://gena7777-maker.github.io/Sunway" class="link-btn">ЖМИ</a>
+        </div>
+        
+        <div class="notification">
+            <p><span class="link-emoji" style="margin-right: 5px;">❗️</span>Сохрани эту ссылку. Тут будут ссылки на ботов, в случае блокировки.</p>
         </div>
         
         <div class="footer">
-            <p>Сохраните эту страницу для быстрого доступа</p>
+            <p><span class="link-emoji">🤝</span> Если вы нашли какие-то баги или у вас есть предложение по поводу рекламы, сотрудничества, предложки контента или новых функций, для реализации их в бота, то можете написать об этом в чат или на прямую менеджеру. Мы всегда будем рады вашему мнению.</p>
         </div>
     </div>
 </body>
-</html>
+            </html>
