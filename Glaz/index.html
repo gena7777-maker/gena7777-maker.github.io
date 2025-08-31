@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ГЛАЗ БОГА</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Russo+One&display=swap');
-        
-        :root {
-            --neon-blue: #00f3ff;
-            --neon-purple: #bd00ff;
-            --neon-pink: #ff00ff;
-            --dark-bg: #0a0a1a;
-            --card-bg: rgba(16, 16, 40, 0.8);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         * {
             margin: 0;
@@ -22,253 +14,201 @@
         }
         
         body {
-            font-family: 'Russo One', sans-serif;
-            background: var(--dark-bg);
-            color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        /* Анимированный фон с листьями */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .leaf {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%2300f3ff" d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 5.5V7H9V5.5L3 7V9L5 9.5V15.5L3 16V18L5 18.5V22H7V18.5L9 18V16H15V18L17 18.5V22H19V18.5L21 18V16L19 15.5V9.5L21 9Z"/></svg>');
-            opacity: 0.6;
-            animation: fall 15s linear infinite;
-        }
-        
-        @keyframes fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+            padding: 20px;
+            line-height: 1.6;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--neon-blue);
-            box-shadow: 0 0 20px var(--neon-blue);
-            margin: 0 auto 20px;
-            overflow: hidden;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 20px var(--neon-blue);
-            }
-            to {
-                box-shadow: 0 0 30px var(--neon-purple), 0 0 40px var(--neon-pink);
-            }
-        }
-        
-        .title {
+        .header {
             text-align: center;
-            font-size: 2.5rem;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
             margin-bottom: 10px;
-            text-shadow: 0 0 10px var(--neon-blue);
-            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
         }
         
         .subtitle {
-            text-align: center;
-            color: var(--neon-blue);
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-        }
-        
-        .card {
-            background: var(--card-bg);
-            border: 2px solid var(--neon-purple);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(189, 0, 255, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card h2 {
-            color: var(--neon-pink);
-            margin-bottom: 15px;
-            text-shadow: 0 0 5px var(--neon-pink);
-        }
-        
-        .card h3 {
-            color: var(--neon-blue);
-            margin-bottom: 10px;
-        }
-        
-        .vibrate-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-family: 'Orbitron', monospace;
             font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            animation: vibrate 0.3s infinite;
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            color: #cccccc;
+            font-weight: 300;
+            margin-bottom: 15px;
         }
         
-        @keyframes vibrate {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-1px); }
-            75% { transform: translateX(1px); }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            border-left: 4px solid #00ff88;
         }
         
-        .vibrate-btn:hover {
-            animation: none;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px var(--neon-pink);
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #00ff88;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: "•";
+            margin-right: 10px;
+            color: #00ff88;
+            font-size: 1.8rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 8px;
+            padding-left: 20px;
+        }
+        
+        .section-text {
+            color: #cccccc;
+            font-size: 0.95rem;
+            padding-left: 20px;
+            margin-bottom: 15px;
         }
         
         .divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
             margin: 25px 0;
         }
         
-        .feature {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+        .highlight {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 3px solid #00ff88;
         }
         
-        .feature-icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 15px;
-            color: var(--neon-blue);
-            flex-shrink: 0;
+        .highlight-title {
+            font-weight: 600;
+            color: #00ff88;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #000000;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.5);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            color: #888888;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .main-title {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(0, 255, 136, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+        }
+        
+        .main-title {
+            animation: glow 2s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
-    <!-- Анимированный фон -->
-    <div class="bg-animation" id="bgAnimation"></div>
-    
     <div class="container">
-        <!-- Аватарка -->
-        <div class="avatar">
-            <img src="https://via.placeholder.com/120" alt="Глаз Бога" id="avatarImg">
+        <div class="header">
+            <h1 class="main-title">ГЛАЗ БОГА</h1>
+            <p class="subtitle">Все актуальный боты сохраните ссылку что бы иметь постоянный доступ</p>
         </div>
         
-        <h1 class="title">ГЛАЗ БОГА</h1>
-        <p class="subtitle">Все актуальные боты - сохраните ссылку для постоянного доступа</p>
-        
-        <div class="card">
-            <h2>ГЛАЗ БОГА / ПРОБИВ</h2>
-            <p>Большой поиск по разным данным</p>
-            <button class="vibrate-btn">ПОДКЛЮЧИТЬСЯ</button>
+        <div class="section">
+            <h2 class="section-title">ГЛАЗ БОГА / ПРОБИВ</h2>
+            <p class="section-text">Большой поиск по разным данным</p>
         </div>
         
-        <div class="card">
-            <h3>СМС БОМБЕР</h3>
-            <p>Бесплатный пробный смс спам</p>
-            <button class="vibrate-btn">АКТИВИРОВАТЬ</button>
+        <div class="section">
+            <h3 class="section-subtitle">СМС БОМБЕР</h3>
+            <p class="section-text">Бесплатный пробный смс спам</p>
         </div>
         
         <div class="divider"></div>
         
-        <div class="card">
-            <h2>ДЕШЕВЫЕ ЗВЕЗДЫ STARS</h2>
-            <p>Экономия до 35% при покупке Телеграм звезд</p>
-            <button class="vibrate-btn">КУПИТЬ</button>
+        <div class="highlight">
+            <div class="highlight-title">ДЕШЕВЫЕ ЗВЕЗДЫ STARS</div>
+            <p class="section-text">Экономия до 35% при покупке Телеграм звезд</p>
         </div>
         
-        <div class="card">
-            <h2>САМЫЙ БЫСТРЫЙ ВПН</h2>
-            <p>VPN пробник за 1P !!!</p>
-            <button class="vibrate-btn">ПОПРОБОВАТЬ</button>
+        <div class="highlight">
+            <div class="highlight-title">САМЫЙ БЫСТРЫЙ ВПН</div>
+            <p class="section-text">VPN пробник за 1P !!!</p>
         </div>
         
-        <div class="card">
-            <h2>РАЗДЕВАТОР ИИ</h2>
-            <p>Сделай ввод из любого фото</p>
-            <button class="vibrate-btn">ЗАГРУЗИТЬ</button>
+        <div class="highlight">
+            <div class="highlight-title">РАЗДЕВАТОР ИИ</div>
+            <p class="section-text">Сделай ввод из любого фото</p>
+        </div>
+        
+        <div class="footer">
+            <p>Сохраните эту страницу для быстрого доступа ко всем сервисам</p>
         </div>
     </div>
-
-    <script>
-        // Создание анимированных листьев
-        function createLeaves() {
-            const bgAnimation = document.getElementById('bgAnimation');
-            for (let i = 0; i < 20; i++) {
-                const leaf = document.createElement('div');
-                leaf.className = 'leaf';
-                leaf.style.left = Math.random() * 100 + 'vw';
-                leaf.style.animationDelay = Math.random() * 15 + 's';
-                leaf.style.animationDuration = (10 + Math.random() * 10) + 's';
-                bgAnimation.appendChild(leaf);
-            }
-        }
-        
-        // Замена аватарки на ваше изображение
-        document.getElementById('avatarImg').src = '1000037307.jpg';
-        
-        // Запуск анимации
-        createLeaves();
-        
-        // Дополнительные эффекты при наведении
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.boxShadow = '0 0 30px rgba(189, 0, 255, 0.6)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.boxShadow = '0 0 20px rgba(189, 0, 255, 0.3)';
-            });
-        });
-    </script>
 </body>
-  </html>
+</html>
