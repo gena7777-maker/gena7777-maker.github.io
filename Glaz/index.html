@@ -15,21 +15,36 @@
         
         body {
             font-family: 'Rubik', sans-serif;
-            background: url('https://drive.google.com/file/d/1x4V5pgWFnKcOfBdhiAT3zkydonKz0c4c/view?usp=drivesdk') center/cover no-repeat fixed;
+            background: url('https://watch.wave.video/H8FnhwIWTl7yYonT') center/cover no-repeat fixed;
             color: #ffffff;
             min-height: 100vh;
             padding: 20px;
+            position: relative;
+        }
+        
+        /* Затемнение фона для лучшей читаемости */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
         }
         
         .container {
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         /* Аватарка */
         .avatar {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             margin: 0 auto 20px;
             border: 4px solid #00ff00;
@@ -39,12 +54,6 @@
             align-items: center;
             justify-content: center;
             background: rgba(0, 0, 0, 0.8);
-        }
-        
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
         
         .avatar img {
@@ -88,12 +97,6 @@
         }
         
         .channel-block {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
             border-left: 5px solid #6c5ce7;
         }
         
@@ -114,19 +117,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
-            margin-bottom: 12px;
-            position: relative;
+            border-bottom: 1px dashed #ddd;
         }
         
-        /* Центрированный разделитель */
-        .channel-line:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 10%;
-            width: 80%;
-            height: 1px;
-            border-bottom: 1px dashed #ddd;
+        .channel-line:last-child {
+            border-bottom: none;
         }
         
         .link-text {
@@ -176,11 +171,6 @@
             background: #fff9e6;
         }
         
-        .notification p {
-            color: #000000 !important;
-            font-weight: 500;
-        }
-        
         .footer {
             background: rgba(45, 52, 54, 0.95);
             color: white;
@@ -200,8 +190,8 @@
         
         @media (max-width: 768px) {
             .avatar {
-                width: 200px;
-                height: 200px;
+                width: 120px;
+                height: 120px;
             }
             
             .neon-title {
@@ -225,8 +215,8 @@
             }
             
             .avatar {
-                width: 180px;
-                height: 180px;
+                width: 100px;
+                height: 100px;
             }
             
             .neon-title {
