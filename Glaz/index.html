@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ссылки на ботов</title>
     <style>
-        @import url('https://raw.githubusercontent.com/gena7777-maker/Video/main/%40iconesvideo%3D83ac1b.mp4');
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
         
         * {
             margin: 0;
@@ -13,9 +13,33 @@
             box-sizing: border-box;
         }
         
+        /* Видеофон */
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            object-fit: cover;
+        }
+        
+        /* Затемнение фона */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        
         body {
             font-family: 'Rubik', sans-serif;
-            background: url('https://watch.wave.video/H8FnhwIWTl7yYonT') center/cover no-repeat fixed;
             color: #ffffff;
             min-height: 100vh;
             padding: 20px;
@@ -24,6 +48,7 @@
         .container {
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
         }
         
         /* Аватарка */
@@ -167,7 +192,7 @@
         }
         
         .notification p {
-            color: #000000 !important; /* Черный текст */
+            color: #000000 !important;
             font-weight: 500;
         }
         
@@ -235,6 +260,11 @@
     </style>
 </head>
 <body>
+    <!-- Видеофон -->
+    <video autoplay muted loop playsinline id="bgVideo">
+        <source src="https://raw.githubusercontent.com/gena7777-maker/Video/main/%40iconesvideo%3D83ac1b.mp4" type="video/mp4">
+    </video>
+    
     <div class="container">
         <!-- Аватарка -->
         <div class="avatar">
@@ -295,4 +325,4 @@
         </div>
     </div>
 </body>
-</html>
+                                                                              </html>
