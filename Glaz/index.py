@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ссылки на ботов</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: url('https://watch.wave.video/H8FnhwIWTl7yYonT') center/cover no-repeat fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Аватарка */
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid #00ff00;
+            box-shadow: 0 0 30px #00ff00, 0 0 50px rgba(0, 255, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Неоновый заголовок */
+        .neon-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonGlow {
+            from {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            }
+            to {
+                text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00, 0 0 45px #00ff00;
+            }
+        }
+        
+        /* Карточки с белым фоном */
+        .channel-block,
+        .link-item,
+        .notification,
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .channel-block {
+            border-left: 5px solid #6c5ce7;
+        }
+        
+        .link-item {
+            border-left: 5px solid #fd79a8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .channel-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .channel-line:last-child {
+            border-bottom: none;
+        }
+        
+        .link-text {
+            font-weight: 600;
+            color: #2d3436;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .link-emoji {
+            font-size: 1.5em;
+            margin-right: 15px;
+            width: 35px;
+            text-align: center;
+        }
+        
+        .link-btn {
+            background: linear-gradient(135deg, #6c5ce7, #fd79a8);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .link-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(253, 121, 168, 0.6);
+        }
+        
+        .link-btn.disabled {
+            background: #b2bec3;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .notification {
+            border-left: 5px solid #fdcb6e;
+            background: #fff9e6;
+        }
+        
+        .notification p {
+            color: #000000 !important; /* Черный текст */
+            font-weight: 500;
+        }
+        
+        .footer {
+            background: rgba(45, 52, 54, 0.95);
+            color: white;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .link-text .link-emoji:last-child {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+        
+        .notification .link-emoji {
+            margin-right: 8px;
+            margin-left: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .neon-title {
+                font-size: 2.2rem;
+            }
+            
+            .link-item {
+                padding: 20px;
+            }
+            
+            .link-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                min-width: 80px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .neon-title {
+                font-size: 1.8rem;
+            }
+            
+            .link-text {
+                font-size: 1rem;
+            }
+            
+            .link-emoji {
+                font-size: 1.3em;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Аватарка -->
+        <div class="avatar">
+            <img src="https://i.postimg.cc/DJkL8FYF/image.jpg" alt="Аватарка">
+        </div>
+        
+        <!-- Неоновый заголовок -->
+        <h1 class="neon-title">🔗 Ссылки на ботов</h1>
+        
+        <div class="channel-block">
+            <div class="channel-line">
+                <span class="link-text"><span class="link-emoji">📢</span> НАШ КАНАЛ</span>
+                <a href="https://t.me/+lGnQt4AN-cgzNDJl" class="link-btn">ЖМИ</a>
+            </div>
+            <div class="channel-line">
+                <span class="link-text"><span class="link-emoji">🔁</span> Резервный канал</span>
+                <span class="link-btn disabled">Отсутствует</span>
+            </div>
+        </div>
+        
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">💬</span> НАШ ЧАТ</span>
+            <a href="https://t.me/+SpkFdndx7qkwYWFl" class="link-btn">ЖМИ</a>
+        </div>
+        
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">💎</span> SUNWAY</span>
+            <a href="https://t.me/vedeto_bot" class="link-btn">ЖМИ</a>
+        </div>
+        
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">🦠</span> VirUs</span>
+            <a href="https://t.me/decoret_bot" class="link-btn">ЖМИ</a>
+        </div>
+        
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji" style="margin-right: 5px;">♦</span>ANUKRA<span class="link-emoji" style="margin-left: 5px;">♣</span></span>
+            <a href="https://t.me/bemalo_bot" class="link-btn">ЖМИ</a>
+        </div>
+
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">🧸</span> TEDDY</span>
+            <a href="https://t.me/selamo_bot" class="link-btn">ЖМИ</a>
+        </div>
+
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">👤</span> Менеджер</span>
+            <a href="https://t.me/goctac9" class="link-btn">ЖМИ</a>
+        </div>
+        
+        <div class="link-item">
+            <span class="link-text"><span class="link-emoji">💎</span> Актуальные задания</span>
+            <a href="https://gena7777-maker.github.io/Sunway" class="link-btn">ЖМИ</a>
+        </div>
+        
+        <div class="notification">
+            <p><span class="link-emoji" style="margin-right: 8px;">❗️</span>Сохрани эту ссылку. Тут будут ссылки на ботов, в случае блокировки.</p>
+        </div>
+        
+        <div class="footer">
+            <p><span class="link-emoji">🤝</span> Если вы нашли какие-то баги или у вас есть предложение по поводу рекламы, сотрудничества, предложки контента или новых функций, для реализации их в бота, то можете написать об этом в чат или на прямую менеджеру. Мы всегда будем рады вашему мнению.</p>
+        </div>
+    </div>
+</body>
+</html>
