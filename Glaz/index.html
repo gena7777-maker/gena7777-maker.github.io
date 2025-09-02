@@ -111,6 +111,44 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
+
+        @keyframes bassVibration {
+            0%, 100% { 
+                transform: translateX(0) scale(1);
+            }
+            25% { 
+                transform: translateX(-1px) scale(1.02);
+            }
+            50% { 
+                transform: translateX(1px) scale(0.98);
+            }
+            75% { 
+                transform: translateX(1px) scale(1.02);
+            }
+        }
+
+        .vibrate-btn {
+            animation: bassVibration 0.3s infinite;
+            background: linear-gradient(135deg, #6c5ce7, #fd79a8);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .vibrate-btn:hover {
+            animation: none;
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(253, 121, 168, 0.6);
+        }
         
         .link-item {
             border-left: 5px solid #fd79a8;
@@ -291,7 +329,7 @@
         <div class="channel-block">
             <div class="channel-line">
                 <span class="link-text" style="font-weight: 900;"><span class="link-emoji">📢</span> НАШ КАНАЛ</span>
-                <a href="https://t.me/+lGnQt4AN-cgzNDJl" class="link-btn">ЖМИ</a>
+                <a href="https://t.me/+lGnQt4AN-cgzNDJl" class="vibrate-btn">ЖМИ</a>
             </div>
         </div>
         
