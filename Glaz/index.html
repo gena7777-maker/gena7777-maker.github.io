@@ -28,7 +28,17 @@
             backface-visibility: hidden;
         }
         
-
+        /* Затемнение фона */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
         
         body {
             font-family: 'Rubik', sans-serif;
@@ -85,6 +95,26 @@
             }
         }
         
+        /* Анимация пульсации для блока */
+        @keyframes pulseBass {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            25% {
+                transform: scale(1.008);
+                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            }
+            50% {
+                transform: scale(1.012);
+                box-shadow: 0 7px 20px rgba(0,0,0,0.14);
+            }
+            75% {
+                transform: scale(1.008);
+                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            }
+        }
+        
         /* Карточки с белым фоном */
         .channel-block,
         .link-item,
@@ -96,7 +126,8 @@
             margin-bottom: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             border: 2px solid rgba(255, 255, 255, 0.3);
-        }        
+        }
+        
         .channel-block {
             background: white;
             border-radius: 12px;
@@ -105,49 +136,13 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             border-left: 5px solid #6c5ce7;
             transition: all 0.3s ease;
+            animation: pulseBass 1.2s infinite;
         }
         
         .channel-block:hover {
+            animation: none;
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        @keyframes bassVibration {
-            0%, 100% { 
-                transform: translateX(0) scale(1);
-            }
-            25% { 
-                transform: translateX(-1px) scale(1.02);
-            }
-            50% { 
-                transform: translateX(1px) scale(0.98);
-            }
-            75% { 
-                transform: translateX(1px) scale(1.02);
-            }
-        }
-
-        .vibrate-btn {
-            animation: bassVibration 0.3s infinite;
-            background: linear-gradient(135deg, #6c5ce7, #fd79a8);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-            min-width: 100px;
-            text-align: center;
-        }
-
-        .vibrate-btn:hover {
-            animation: none;
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(253, 121, 168, 0.6);
         }
         
         .link-item {
@@ -167,11 +162,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px dashed #ddd;
-        }
-        
-        .channel-line:last-child {
-            border-bottom: none;
         }
         
         .link-text {
@@ -243,6 +233,21 @@
             margin-left: 0;
         }
         
+        /* Лоадер */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        
         @media (max-width: 768px) {
             .avatar {
                 width: 120px;
@@ -287,35 +292,19 @@
                 margin-right: 10px;
             }
         }
-        
-        <!-- Лоадер -->
-        <div id="loader" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; display:flex; align-items:center; justify-content:center; transition: opacity 0.5s ease;">
-            <div style="color:#00ff00; font-size:20px; font-family: 'Rubik', sans-serif;">Загрузка фона...</div>
-        </div>
-
-        <script>
-            function showContent() {
-            document.getElementById('loader').style.opacity = '0';
-            setTimeout(function() {
-                document.getElementById('loader').style.display = 'none';
-            }, 500);
-         }
-
-        // Fallback на случай если видео не загрузится
-        setTimeout(function() {
-            if (document.getElementById('loader').style.display !== 'none') {
-                document.getElementById('loader').style.display = 'none';
-            }
-        }, 5000);
-        </script>  
     </style>
 </head>
 <body>
     <!-- Видеофон -->
     <video autoplay muted loop playsinline id="bgVideo" 
            preload="auto" loading="eager" onloadeddata="showContent()">
-      <source src="https://github.com/gena7777-maker/Video/raw/refs/heads/main/MP4_20250902_155117VLOG.mp4" type="video/mp4">
+        <source src="https://github.com/gena7777-maker/Video/raw/refs/heads/main/MP4_20250902_155117VLOG.mp4" type="video/mp4">
     </video>
+    
+    <!-- Лоадер -->
+    <div id="loader">
+        <div style="color:#00ff00; font-size:20px; font-family: 'Rubik', sans-serif;">Загрузка фона...</div>
+    </div>
     
     <div class="container">
         <!-- Аватарка -->
@@ -329,7 +318,7 @@
         <div class="channel-block">
             <div class="channel-line">
                 <span class="link-text" style="font-weight: 900;"><span class="link-emoji">📢</span> НАШ КАНАЛ</span>
-                <a href="https://t.me/+lGnQt4AN-cgzNDJl" class="vibrate-btn">ЖМИ</a>
+                <a href="https://t.me/+lGnQt4AN-cgzNDJl" class="link-btn">ЖМИ</a>
             </div>
         </div>
         
@@ -376,5 +365,21 @@
             <p><span class="link-emoji">🤝</span> Если вы нашли какие-то баги или у вас есть предложение по поводу рекламы, сотрудничества, предложки контента или новых функций, для реализации их в бота, то можете написать об этом в чат или на прямую менеджеру. Мы всегда будем рады вашему мнению.</p>
         </div>
     </div>
+
+    <script>
+        function showContent() {
+            document.getElementById('loader').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('loader').style.display = 'none';
+            }, 500);
+        }
+
+        // Fallback на случай если видео не загрузится
+        setTimeout(function() {
+            if (document.getElementById('loader').style.display !== 'none') {
+                document.getElementById('loader').style.display = 'none';
+            }
+        }, 5000);
+    </script>
 </body>
-                                                                              </html>
+</html>
